@@ -1,9 +1,10 @@
 import { NextPage } from "next";
 import Head from "next/head";
+import { Header, Banner } from "../components";
 
 const Home: NextPage = () => {
   return (
-    <div className="h-screen w-screen p-10 dark:bg-gray-900">
+    <div className="dark:bg-gray-900">
       <Head>
         <title>Airbnb</title>
         <meta
@@ -12,6 +13,11 @@ const Home: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      {/*Header*/}
+      <Header />
+      {/*Banner*/}
+      <Banner />
     </div>
   );
 };

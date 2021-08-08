@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   GlobeAltIcon,
   MenuIcon,
@@ -7,8 +7,32 @@ import {
 } from "@heroicons/react/solid";
 
 export const Header: React.FC = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 left-0 z-50 grid grid-cols-3 bg-white shadow-md p-3 md:px-10">
+    <header
+      className="sticky top-0 left-0 z-50 grid grid-cols-3 p-3 md:px-10 transition-colors"
+      style={{
+        backgroundColor: scrolled ? "white" : "transparent",
+        boxShadow: scrolled ? "rgb(0 0 0 / 8%) 0px 1px 12px" : undefined,
+        backgroundImage: scrolled
+          ? undefined
+          : "linear-gradient(to bottom, #000, rgba(0, 0, 0, 0))",
+      }}
+    >
       {/* left */}
       <div className="relative flex items-center h-7 cursor-pointer my-auto">
         <svg
@@ -35,7 +59,7 @@ export const Header: React.FC = () => {
 
       {/* right */}
       <div className={"flex space-x-4 items-center justify-end text-gray-500"}>
-        <p className={"hidden md:inline"}>Become a host</p>
+        <p className={"hidden lg:inline"}>Become a host</p>
         <GlobeAltIcon className="h-6" />
 
         <div

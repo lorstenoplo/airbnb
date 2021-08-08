@@ -18,6 +18,8 @@ const Home: NextPage = () => {
       <Header />
       {/*Banner*/}
       <Banner />
+
+      <div className={"h-screen"} />
     </div>
   );
 };

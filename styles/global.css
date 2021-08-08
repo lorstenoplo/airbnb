@@ -1,3 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.btn:hover {
+  box-shadow: 0 0 0 2px #2e2e48, 0 0 0 4px #fafafc;
+  transition: all 0.2s ease-in-out;
+}

@@ -8,7 +8,10 @@
   font-family: "Nunito Sans", sans-serif;
 }
 
+.btn {
+  transition: all 0.2s ease-in-out;
+}
+
 .btn:hover {
   box-shadow: 0 0 0 2px #2e2e48, 0 0 0 4px #fafafc;
-  transition: all 0.2s ease-in-out;
 }

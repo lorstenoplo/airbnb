@@ -1,27 +1,38 @@
 import { NextPage } from "next";
-import Head from "next/head";
-import { Header, Banner } from "../components";
+import { Banner, Header, ExploreNearBy } from "../components";
+import { exploreDataType } from "../types/exploreDataType";
 
-const Home: NextPage = () => {
+interface Props {
+  exploreData: [exploreDataType];
+}
+
+const Home: NextPage<Props> = ({ exploreData }) => {
   return (
     <div className="dark:bg-gray-900">
-      <Head>
-        <title>Airbnb</title>
-        <meta
-          name="description"
-          content="Best airbnb clone created by nishanth"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       {/*Header*/}
       <Header />
       {/*Banner*/}
       <Banner />
 
+      <main className="max-w-7xl mx-auto px-8 sm:px-16">
+        {/* main section */}
+        <ExploreNearBy exploreData={exploreData} />
+      </main>
       <div className={"h-screen"} />
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const exploreData = await fetch("https://links.papareact.com/pyp").then(
+    (res) => res.json()
+  );
+
+  return {
+    props: {
+      exploreData,
+    },
+  };
+}
 
 export default Home;

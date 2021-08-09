@@ -51,7 +51,7 @@ export const Header: React.FC = () => {
           placeholder="Start your search"
           type="text"
           className={
-            "outline-none pl-3 sm:pl-5 bg-transparent flex-grow cursor-pointer text-sm text-gray-600 placeholder-gray-400"
+            "outline-none pl-3.5 sm:pl-5 bg-transparent flex-grow cursor-pointer text-sm text-gray-600 placeholder-gray-400"
           }
         />
         <SearchIcon className="hidden md:inline-flex h-8 w-8 bg-red-500 text-white rounded-full p-2 md:mx-2" />
@@ -63,7 +63,9 @@ export const Header: React.FC = () => {
         <GlobeAltIcon className="h-6" />
 
         <div
-          className={"flex items-center space-x-2 border-2 p-2 rounded-full"}
+          className={
+            "flex items-center space-x-2 border-2 p-2 rounded-full bg-white"
+          }
         >
           <MenuIcon className={"h-6"} />
           <UserCircleIcon className={"h-6"} />

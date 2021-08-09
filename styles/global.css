@@ -28,3 +28,17 @@
     @apply text-base hover:underline opacity-75 hover:opacity-100 cursor-pointer transform transition duration-300 ease-out;
   }
 }
+
+/* override */
+.rdrStaticRange {
+  border-bottom: none !important;
+  background-color: #fafafc !important;
+}
+
+.rdrDefinedRangesWrapper {
+  background-color: #fafafc !important;
+  border-radius: 8px !important;
+  margin-right: 1.5rem;
+  padding-top: 0.75rem;
+  border-right: 0 !important;
+}

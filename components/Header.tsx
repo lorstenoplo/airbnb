@@ -1,13 +1,27 @@
-import React, { useEffect, useState } from "react";
 import {
   GlobeAltIcon,
   MenuIcon,
   SearchIcon,
   UserCircleIcon,
+  UsersIcon,
 } from "@heroicons/react/solid";
+import React, { useEffect, useState } from "react";
+import { DateRangePicker } from "react-date-range";
+import "react-date-range/dist/styles.css"; // main style file
+import "react-date-range/dist/theme/default.css"; // theme css file
 
 export const Header: React.FC = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
+  const [searchInput, setSearchInput] = useState<string>("");
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [noOfGuests, setNoOfGuests] = useState(1);
+
+  const selectionRange = {
+    startDate,
+    endDate,
+    key: "selection",
+  };
 
   useEffect(() => {
     const onScroll = () => {
@@ -21,6 +35,11 @@ export const Header: React.FC = () => {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const handleSelect = (ranges: any) => {
+    setStartDate(ranges.selection.startDate);
+    setEndDate(ranges.selection.endDate);
+  };
 
   return (
     <header
@@ -48,6 +67,8 @@ export const Header: React.FC = () => {
       {/* middle */}
       <div className="flex items-center border-2 rounded-full py-1.5 md:hover:shadow-md cursor-pointer">
         <input
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
           placeholder="Start your search"
           type="text"
           className={
@@ -71,6 +92,44 @@ export const Header: React.FC = () => {
           <UserCircleIcon className={"h-6"} />
         </div>
       </div>
+
+      {searchInput.trim() !== "" && scrolled && (
+        <div className={`flex-col col-span-3 mx-auto mt-5`}>
+          <DateRangePicker
+            ranges={[selectionRange]}
+            minDate={new Date()}
+            rangeColors={["#FD5B61"]}
+            onChange={handleSelect}
+          />
+
+          <div className="flex items-center border-b my-4">
+            <h2 className="text-2xl font-semibold flex-grow">
+              Number of Guests
+            </h2>
+
+            <UsersIcon className="h-5" />
+            <input
+              value={noOfGuests}
+              onChange={(e) => setNoOfGuests(e.target.value as any)}
+              min={1}
+              type="number"
+              className="w-12 pl-3 text-lg outline-none text-red-500"
+            />
+          </div>
+
+          <div className="flex">
+            <button
+              onClick={() => setSearchInput("")}
+              className="flex-grow text-gray-500 p-2 transition hover:bg-gray-100 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded-md"
+            >
+              Cancel
+            </button>
+            <button className="flex-grow text-red-500 hover:bg-red-500 hover:text-white rounded-md p-2 transition focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+              Search
+            </button>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

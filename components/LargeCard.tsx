@@ -24,7 +24,7 @@ export const LargeCard: React.FC<Props> = ({ title, img, buttonTxt, desc }) => {
         <h3 className="text-4xl mb-3 w-64 font-semibold">{title}</h3>
         <p>{desc}</p>
 
-        <button className="text-sm text-white bg-gray-900 px-4 py-2 rounded-lg mt-5">
+        <button className="text-sm text-white bg-gray-900 px-4 py-2 rounded-lg mt-5 hover:ring-2 hover:ring-gray-900 hover:ring-offset-2 transition">
           {buttonTxt}
         </button>
       </div>

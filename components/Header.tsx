@@ -12,7 +12,9 @@ import "react-date-range/dist/theme/default.css";
 import { useRouter } from "next/router"; // theme css file
 import Link from "next/link";
 
-export const Header: React.FC<{ onlyWhitebg: boolean }> = ({ onlyWhitebg }) => {
+export const Header: React.FC<{ onlyWhitebg?: boolean }> = ({
+  onlyWhitebg = false,
+}) => {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [searchInput, setSearchInput] = useState<string>("");
   const [startDate, setStartDate] = useState(new Date());

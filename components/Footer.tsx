@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
 
         <p className="footerItem">Accessibility</p>
         <p className="footerItem">This is not a real site</p>
-        <p className="footerItem">Built For demonstration purposes</p>
+        <p className="footerItem">Built For demonstration</p>
         <p className="footerItem">Pedro Goncalves</p>
         <p className="footerItem">Web Developer</p>
       </div>

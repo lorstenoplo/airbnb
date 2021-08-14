@@ -1,11 +1,12 @@
 import "tailwindcss/tailwind.css";
-import { AppProps } from "next/app";
 import "../styles/global.css";
+
 import Head from "next/head";
+import { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <div>
       <Head>
         <title>Airbnb</title>
         <meta
@@ -15,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Component {...pageProps} />
-    </>
+    </div>
   );
 }
 

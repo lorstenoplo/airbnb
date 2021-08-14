@@ -40,7 +40,7 @@ const Home: NextPage<Props> = ({ exploreData, cardData }) => {
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   const exploreData = await fetch("https://links.papareact.com/pyp").then(
     (res) => res.json()
   );
@@ -55,6 +55,6 @@ export async function getStaticProps() {
       cardData,
     },
   };
-}
+};
 
 export default Home;
